@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Character">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAAAAAAAAAAAAAAgAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Character.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_position" />
+      <Field Name="_health" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="Health">
+    <Position X="5.5" Y="4" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACACQAAAAEBQAAAAAAAACAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Health.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MyVector3">
+    <Position X="0.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAAABgAQEAYAE=</HashCode>
+      <FileName>Assets\MyVector3.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
