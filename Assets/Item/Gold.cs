@@ -1,18 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gold : Item
 {
-    // Start is called before the first frame update
+    [SerializeField] int _amount;
+    [SerializeField]
+
+    public event Action<int> OnGoldUpdate;
+    public int Amount { get => _amount; private set => _amount = value; }
+
     void Start()
     {
-        
+        _amount = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider other)
     {
-        
+        var h = other.GetComponent<Item>();
+        if(h != null)
+        {
+            h.getGold();
+        }
     }
 }

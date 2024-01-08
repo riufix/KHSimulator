@@ -13,6 +13,14 @@ public class HealthUI : MonoBehaviour
 
     int CachedMaxHealth { get; set; }
 
+
+    private void Start()
+    {
+        CachedMaxHealth = _playerHealth.MaxHealth;
+        _playerHealth.OnHealthUpdate += UpdateSlider;
+        UpdateSlider(_playerHealth.CurrentHealth);
+    }
+
     void UpdateSlider(int newHealthValue)
     {
         _slider.value = newHealthValue;

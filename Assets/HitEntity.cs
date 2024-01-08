@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class HitEntity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int _hitDamage;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        var h = other.gameObject.GetComponent<EntityHealth>();
+        if (h!=null)
+        {
+            h.TakeDamage(5);
+        }
     }
 }
