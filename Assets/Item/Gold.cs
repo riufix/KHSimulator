@@ -6,22 +6,10 @@ using UnityEngine;
 public class Gold : Item
 {
     [SerializeField] int _amount;
-    [SerializeField]
-
-    public event Action<int> OnGoldUpdate;
     public int Amount { get => _amount; private set => _amount = value; }
 
-    void Start()
+    public override void ActiveEffect(GameObject player)
     {
-        _amount = 0;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        var h = other.GetComponent<Item>();
-        if(h != null)
-        {
-            h.getGold();
-        }
+        if (player.TryGetComponent(out EntityGold goldScript)) goldScript.GoldUpdate(_amount);
     }
 }

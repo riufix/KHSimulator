@@ -975,6 +975,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7499bffe1014f1543b146684ba24ef84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: {fileID: 0}
+  _playerGold: {fileID: 0}
 --- !u!1001 &599547463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1522,7 +1524,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 37
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1896,6 +1898,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 792663629}
     m_Modifications:
+    - target: {fileID: 4441928871813012542, guid: df17769e7a3d8134d8ac027e1df9461e,
+        type: 3}
+      propertyPath: _amount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7068944266405786497, guid: df17769e7a3d8134d8ac027e1df9461e,
         type: 3}
       propertyPath: m_RootOrder
