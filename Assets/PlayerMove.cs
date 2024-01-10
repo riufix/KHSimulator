@@ -20,10 +20,13 @@ public class PlayerMove : MonoBehaviour
 
     // Event pour les dev
     public event Action OnStartMove;
+    public event Action OnStopMove;
 
     // Event pour les GD
     [SerializeField] UnityEvent _onEvent;
     [SerializeField] UnityEvent _onEventPost;
+
+    public UnityEvent _
 
     public Vector2 JoystickDirection { get; private set; }
     Coroutine MovementRoutine { get; set; }
@@ -40,6 +43,11 @@ public class PlayerMove : MonoBehaviour
         StartCoroutine(moveChecker());
     }
 
+    private void OnStop(CallbackContext ctx)
+    {
+        OnStopMove?.Invoke();
+    }
+
     private void OnDestroy()
     {
         _move.action.performed -= OnMove;
@@ -49,7 +57,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator moveChecker()
     {
-        //Debug.Log("coucou");
+        OnStartMove?.Invoke();
         while (true)
         {
             JoystickDirection = _move.action.ReadValue<Vector2>();
@@ -58,6 +66,5 @@ public class PlayerMove : MonoBehaviour
             OnStartMove?.Invoke();
             yield return new WaitForFixedUpdate();
         }
-        
     }
 }
