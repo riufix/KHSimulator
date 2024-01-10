@@ -37,10 +37,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnMove(CallbackContext ctx)
     {
-        JoystickDirection = _move.action.ReadValue<Vector2>();
-        Vector3 Move = new Vector3 (JoystickDirection.x,0,JoystickDirection.y);
-        _rb.velocity = Move * _speed;
-        OnStartMove.Invoke();
+        StartCoroutine(moveChecker());
     }
 
     private void OnDestroy()
@@ -49,4 +46,18 @@ public class PlayerMove : MonoBehaviour
         _move.action.canceled -= OnMove;
     }
 
+
+    IEnumerator moveChecker()
+    {
+        //Debug.Log("coucou");
+        while (true)
+        {
+            JoystickDirection = _move.action.ReadValue<Vector2>();
+            Vector3 Move = new Vector3(JoystickDirection.x, 0, JoystickDirection.y);
+            _rb.velocity = Move * _speed;
+            OnStartMove?.Invoke();
+            yield return new WaitForFixedUpdate();
+        }
+        
+    }
 }

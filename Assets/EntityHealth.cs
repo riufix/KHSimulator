@@ -8,7 +8,7 @@ public class EntityHealth : MonoBehaviour
 {
 
     [SerializeField] int _maxHealth;
-    public int MaxHealth { get=> _maxHealth; private set => _maxHealth = value; }
+    public int MaxHealth { get => _maxHealth; private set => _maxHealth = value; }
 
     [SerializeField] UnityEvent _onDeath;
 
@@ -22,10 +22,10 @@ public class EntityHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if(CurrentHealth != 0)
+        if (CurrentHealth != 0)
         {
             CurrentHealth -= amount;
-            OnHealthUpdate.Invoke(CurrentHealth);
+            OnHealthUpdate?.Invoke(CurrentHealth);
             if (CurrentHealth < 0)
             {
                 _onDeath.Invoke();
@@ -34,5 +34,17 @@ public class EntityHealth : MonoBehaviour
 
     }
 
+    public void HealthUpdate(int amount)
+    {
+        if (CurrentHealth != _maxHealth)
+        {
+            CurrentHealth += amount;
 
+            if (CurrentHealth >= _maxHealth)
+            {
+                CurrentHealth = Math.Clamp(amount, 0, _maxHealth);
+            }
+            OnHealthUpdate?.Invoke(CurrentHealth);
+        }
+    }
 }

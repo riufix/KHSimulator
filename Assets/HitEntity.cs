@@ -8,10 +8,11 @@ public class HitEntity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var h = other.gameObject.GetComponent<EntityHealth>();
+        if (other.attachedRigidbody == null) return;
+        var h = other.attachedRigidbody.gameObject.GetComponent<EntityHealth>();
         if (h!=null)
         {
-            h.TakeDamage(5);
+            h.TakeDamage(_hitDamage);
         }
     }
 }

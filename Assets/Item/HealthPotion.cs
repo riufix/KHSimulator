@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int _amount;
+    public int Amount { get => _amount; private set => _amount = value; }
+    public override bool ActiveEffect(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player.TryGetComponent(out EntityHealth health))
+        {
+            health.HealthUpdate(_amount);
+            return true;
+        }
+        return false;
     }
 }

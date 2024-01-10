@@ -26,6 +26,7 @@ public class EntityGold : MonoBehaviour
         if(amount != 0)
         {
             _goldAmount += amount;
+            OnGoldUpdate?.Invoke(_goldAmount);
         }
     }
 }

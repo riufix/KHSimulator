@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class PowerUp : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool ActiveEffect(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (player.TryGetComponent(out PlayerAttack AttackPowerUp))
+        {
+            AttackPowerUp.AttackPoweUp(5);
+            return true;
+        }
+        return false;
     }
 }

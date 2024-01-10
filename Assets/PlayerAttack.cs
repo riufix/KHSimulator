@@ -8,6 +8,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] int _damage;
+    public int Damage { get => _damage; set => _damage = value; }
     [SerializeField] float _attackDelay;
     [SerializeField] bool _waitForAttack;
 
@@ -31,9 +32,20 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void AttackPoweUp(int  amount)
+    {
+        StartCoroutine(AttackPowerUpCoolDown());
+    }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(_attackDelay);
         _waitForAttack = false;
+    }
+
+    IEnumerator AttackPowerUpCoolDown()
+    {
+        _damage = 2;
+        yield break;
     }
 }

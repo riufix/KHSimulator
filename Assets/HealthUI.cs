@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,7 +14,6 @@ public class HealthUI : MonoBehaviour
 
     int CachedMaxHealth { get; set; }
 
-
     private void Start()
     {
         CachedMaxHealth = _playerHealth.MaxHealth;
@@ -24,6 +24,7 @@ public class HealthUI : MonoBehaviour
     void UpdateSlider(int newHealthValue)
     {
         _slider.value = newHealthValue;
+        Debug.Log("cheh");
         _text.text = $"{newHealthValue} / {CachedMaxHealth}";
     }
 

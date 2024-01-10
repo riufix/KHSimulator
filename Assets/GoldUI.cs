@@ -18,6 +18,6 @@ public class GoldUI : MonoBehaviour
     // Update is called once per frame
     void UpdateGold(int amount)
     {
-        _text.text = $"Gold:/{amount}";
+        _text.text = $"Gold:{amount}";
     }
 }

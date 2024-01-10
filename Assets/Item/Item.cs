@@ -8,17 +8,14 @@ public abstract class Item : MonoBehaviour
     [SerializeField] GameObject _pickedItem;
     [SerializeField] UnityEvent _OnPicked;
 
-    public abstract void ActiveEffect(GameObject player);
+    public abstract bool ActiveEffect(GameObject player);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+
+        bool wasAtcive = ActiveEffect(other.attachedRigidbody.gameObject);
+        if (wasAtcive)
+        Destroy(gameObject);
     }
 }
