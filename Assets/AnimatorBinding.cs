@@ -14,6 +14,7 @@ public class AnimatorBinding : MonoBehaviour
     {
         _move.OnStartMove += _move_OnMove;
         _move.OnStopMove += _move_OnStop;
+        _isWalkingBoolParam = "Walking";
     }
     private void _move_OnMove()
     {

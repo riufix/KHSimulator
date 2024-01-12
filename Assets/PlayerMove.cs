@@ -26,8 +26,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] UnityEvent _onEvent;
     [SerializeField] UnityEvent _onEventPost;
 
-    public UnityEvent _
-
     public Vector2 JoystickDirection { get; private set; }
     Coroutine MovementRoutine { get; set; }
 
@@ -40,12 +38,15 @@ public class PlayerMove : MonoBehaviour
 
     private void OnMove(CallbackContext ctx)
     {
-        StartCoroutine(moveChecker());
+       MovementRoutine = StartCoroutine(moveChecker());
     }
 
     private void OnStop(CallbackContext ctx)
     {
         OnStopMove?.Invoke();
+        _rb.velocity = Vector3.zero;
+        StopCoroutine(MovementRoutine);
+        MovementRoutine = null;
     }
 
     private void OnDestroy()
